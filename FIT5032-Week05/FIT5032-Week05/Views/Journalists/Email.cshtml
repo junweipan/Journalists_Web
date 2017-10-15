@@ -1,0 +1,50 @@
+﻿@model FIT5032_Week05.Models.EmailForm
+@{
+    ViewBag.Title = "Email";
+}
+<h2>@ViewBag.Title.</h2>
+
+@using (Html.BeginForm("Email", "Journalists", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Send your comments.</h4>
+    <hr />
+    <div class="form-group">
+        @Html.LabelFor(m => m.FromName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10" >
+            @Html.TextBoxFor(m => m.FromName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.FromName)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ToEmail, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+        @Html.TextBoxFor(model => model.ToEmail, new { @Value = @ViewBag.ToEmail})
+        @Html.ValidationMessageFor(m => m.ToEmail)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Message, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.Message, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Message)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Upload, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            <input type="file" name="upload" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Send" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

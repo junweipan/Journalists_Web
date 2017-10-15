@@ -1,0 +1,70 @@
+﻿@model IEnumerable<FIT5032_Week05.Models.Article>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table id="example2" class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ATitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublishDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Journalist.JName)
+            </th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ATitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublishDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Journalist.JName)
+            </th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ATitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PublishDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Journalist.JName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.AID }, new { @class = "btn btn-primary btn-xs" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.AID }, new { @class = "btn btn-info btn-xs" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.AID }, new { @class = "btn btn-danger btn-xs" }) 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table> 

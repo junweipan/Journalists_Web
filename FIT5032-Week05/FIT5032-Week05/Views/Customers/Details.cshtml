@@ -1,0 +1,79 @@
+﻿@model FIT5032_Week05.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerAddress)
+        </dd>
+    </dl>
+
+    <table class="table table-striped" id="example">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Date</th>
+                <th>Sum</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Order Id</th>
+                <th>Date</th>
+                <th>Sum</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            @foreach (var item in Model.Orders)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.OrderId)</td>
+                    <td>@Html.DisplayFor(modelItem => item.OrderDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.OrderSum)</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

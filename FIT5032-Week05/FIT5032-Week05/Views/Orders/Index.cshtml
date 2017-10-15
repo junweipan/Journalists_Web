@@ -1,0 +1,63 @@
+﻿@model IEnumerable<FIT5032_Week05.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table id="data" class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer.CustomerFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer.CustomerFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </th>
+            <th></th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>
+                    @Html.DisplayFor(modelItem => item.OrderId)
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.CustomerFirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.OrderId }, new { @class = "btn btn-primary btn-xs" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.OrderId }, new { @class = "btn btn-info btn-xs" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.OrderId }, new { @class = "btn btn-warning btn-xs" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
